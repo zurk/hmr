@@ -23,7 +23,7 @@ import sys
 from absl import flags
 import numpy as np
 
-import skimage.io as io
+import cv2
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
@@ -90,7 +90,7 @@ def visualize(img, proc_param, joints, verts, cam):
 
 
 def preprocess_image(img_path, json_path=None):
-    img = io.imread(img_path)
+    img = cv2.imread(img_path)[:, :, ::-1]
     if img.shape[2] == 4:
         img = img[:, :, :3]
 
